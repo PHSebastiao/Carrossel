@@ -3,5 +3,14 @@ body {
     background-color: #eee;
     color: #222;
     font-family: system-ui, sans-serif;
-    
+    padding: 0px 3rem;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+div.content {
+    display: grid;
+    justify-content: center;
 }
