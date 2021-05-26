@@ -1,4 +1,8 @@
-$("#botao").click(function (e) { 
+$("#botaoLeft").click(function (e) { 
     e.preventDefault();
-    console.log("click!");
+    console.log("click left!");
+});
+$("#botaoRight").click(function (e) { 
+    e.preventDefault();
+    console.log("click right!");
 });

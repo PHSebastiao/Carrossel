@@ -9,13 +9,16 @@
 </head>
 <body>
     <h1>Carrossel de Imagens</h1>
-    <div class="content">
-        <button id="botao">teste</button>
-        <ul>
-            <li><img src="assets/Placeholder1.png" id="img1" alt="Imagem 1"></li>
-            <li><img src="assets/Placeholder2.png" id="img2" alt="Imagem 2"></li>
-            <li><img src="assets/Placeholder3.png" id="img3" alt="Imagem 3"></li>
-        </ul>
+    <div id="content">
+        <button id="botaoLeft" class="botao"><</button>
+        <div class="itens">
+            <ul>
+                <li><div class="item ativo"><img src="assets/Placeholder1.png" id="img1" alt="Imagem 1"></div></li>
+                <li><div class="item"><img src="assets/Placeholder2.png" id="img2" alt="Imagem 2"></div></li>
+                <li><div class="item"><img src="assets/Placeholder3.png" id="img3" alt="Imagem 3"></div></li>
+            </ul>
+        </div>
+        <button id="botaoRight" class="botao">></button>
     </div>
 </body>
 <script src="jquery-3.6.0.min.js"></script>

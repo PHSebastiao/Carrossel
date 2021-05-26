@@ -5,12 +5,35 @@ body {
     font-family: system-ui, sans-serif;
     padding: 0px 3rem;
 }
-ul {
+#content ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
 }
-div.content {
+#content {
     display: grid;
     justify-content: center;
+    grid-template-columns: auto auto auto;
+    height: 445px;
+}
+#content .botao {
+    font-family: monospace;
+    font-size: 34px;
+    border: none;
+    background-color: rgba(20, 20, 20, 0.20);
+}
+#content .botao:hover {
+    cursor: pointer;
+}
+.itens {
+    width: 810px;
+    height: 445px;
+    display: inline-block;
+}
+.item {
+    display: none;
+}
+.ativo {
+    display: inherit;
 }
