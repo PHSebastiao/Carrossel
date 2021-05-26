@@ -4,36 +4,59 @@ body {
     color: #222;
     font-family: system-ui, sans-serif;
     padding: 0px 3rem;
+    display: grid;
+    justify-content: center;
 }
-#content ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+h1{
+    text-align: center;
 }
 #content {
     display: grid;
-    justify-content: center;
-    grid-template-columns: auto auto auto;
-    height: 445px;
+    position: relative;
+    overflow: hidden;
+    height: 420px;
+    width: 810px;
+    box-shadow: 0 0 5px 1px #000
 }
 #content .botao {
-    font-family: monospace;
-    font-size: 34px;
-    border: none;
-    background-color: rgba(20, 20, 20, 0.20);
+    display: table;
+    position: absolute;
+    background-color: transparent;
+    font-size: 2rem;
+    top: 0;
+    padding: 0;
+    height: 420px;
+    z-index: 1;
+}
+#content .botao p {
+    display: table-cell;
+    vertical-align: middle;
 }
 #content .botao:hover {
     cursor: pointer;
+    background-color: rgba(1, 1, 1, 0.2);
+}
+#content .botao.botaoRight {
+    right: 0;
+    padding-right: 10px;
+    padding-left: 100px;
+}
+#content .botao.botaoLeft {
+    left: 0;
+    padding-left: 10px;
+    padding-right: 100px;
+}
+.carrossel {
+    list-style-type: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 200%;
 }
 .itens {
     width: 810px;
-    height: 445px;
+    height: 420px;
+    margin: 5px 5px;
     display: inline-block;
-}
-.item {
-    display: none;
-}
-.ativo {
-    display: inherit;
 }

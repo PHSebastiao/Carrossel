@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,33 @@
     <title>Carrossel</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body class="grid">
     <h1>Carrossel de Imagens</h1>
     <div id="content">
-        <button id="botaoLeft" class="botao"><</button>
-        <div class="itens">
-            <ul>
-                <li><div class="item ativo"><img src="assets/Placeholder1.png" id="img1" alt="Imagem 1"></div></li>
-                <li><div class="item"><img src="assets/Placeholder2.png" id="img2" alt="Imagem 2"></div></li>
-                <li><div class="item"><img src="assets/Placeholder3.png" id="img3" alt="Imagem 3"></div></li>
-            </ul>
+        <div class="botao botaoRight">
+            <p>&raquo;</p>
         </div>
-        <button id="botaoRight" class="botao">></button>
+        <ul class="carrossel">
+            <li>
+                <div class="item"><img src="assets/Placeholder1.png" id="img1" alt="Imagem 1"></div>
+            </li>
+            <li>
+                <div class="item"><img src="https://www.via.placeholder.com/810x420/FF0000/000000" id="img2" alt="Imagem 2"></div>
+            </li>
+            <li>
+                <div class="item"><img src="assets/Placeholder3.png" id="img3" alt="Imagem 3"></div>
+            </li>
+            <li>
+                <div class="item"><img src="assets/Placeholder4.png" id="img3" alt="Imagem 3"></div>
+            </li>
+        </ul>
+        <div class="botao botaoLeft">
+            <p>&laquo;</p>
+        </div>
     </div>
 </body>
 <script src="jquery-3.6.0.min.js"></script>
 <script src="custom.js"></script>
+
 </html>
