@@ -11,18 +11,29 @@ $(function () {
         e.preventDefault();
         if (i != 1) {
             i--;
-            $(".carrossel").animate({ 'margin-left': `+=${widthItem}px` }, '500')
+            rolagemEsquerda()
         } else {
-            //console.log(numeroItens, i)
+            $(".carrossel li:last").insertBefore(".carrossel li:first"); // Insere o último antes do primeiro
+            $(".carrossel").css('margin-left', `-=${widthItem}px`); // Mantém a imagem atual
+            rolagemEsquerda()
         }
     });
+
     $(".botaoRight").click(function (e) {
+        e.preventDefault();
         if (i < numeroItens) {
             i++;
-            e.preventDefault();
-            $(".carrossel").animate({ 'margin-left': `-=${widthItem}px` }, '500');
+            rolagemDireita()
         } else {
-            //console.log(numeroItens, i)
+            $(".carrossel li:first").insertAfter(".carrossel li:last");
+            $(".carrossel").css('margin-left', `+=${widthItem}px`);
+            rolagemDireita()
         }
     });
+    function rolagemEsquerda() {
+        $(".carrossel").animate({ 'margin-left': `+=${widthItem}px` }, '500');
+    }
+    function rolagemDireita() {
+        $(".carrossel").animate({ 'margin-left': `-=${widthItem}px` }, '500');
+    }
 });
