@@ -11,39 +11,44 @@ h1{
     text-align: center;
 }
 #content {
-    display: grid;
     position: relative;
-    height: 420px;
-    width: 810px;
+    overflow: hidden;
     box-shadow: 0 0 5px 1px #000
 }
 #content .botao {
-    display: table;
+    z-index: 1;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
     font-size: 2rem;
+    text-align: center;
+    width: 10%;
     top: 0;
+    bottom: 0;
     padding: 0;
-    height: 100%;
-    z-index: 1;
 }
 #content .botao p {
-    display: table-cell;
     vertical-align: middle;
 }
 #content .botao:hover {
     cursor: pointer;
-    background-color: rgba(1, 1, 1, 0.2);
 }
 #content .botao.botaoRight {
     right: 0;
-    padding-right: 10px;
-    padding-left: 100px;
+}
+#content .botao.botaoLeft:hover {
+    background-image: linear-gradient(to left, transparent, rgba(1, 1, 1, 0.2));
 }
 #content .botao.botaoLeft {
     left: 0;
-    padding-left: 10px;
-    padding-right: 100px;
+}
+#content .botao.botaoRight:hover {
+    background-image: linear-gradient(to right, transparent, rgba(1, 1, 1, 0.2));
+}
+.disabled {
+    pointer-events: none;
 }
 .carrossel {
     list-style-type: none;
