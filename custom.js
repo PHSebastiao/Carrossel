@@ -1,34 +1,38 @@
 $(function () {
 
     var numeroItens = $(".carrossel .item").length;
-    var widthItem = parseInt($(".carrossel .item").outerWidth(true));
+    var widthItem = parseInt($(".carrossel .item").css('width'));
     var widthTotal = widthItem * numeroItens;
     $(".carrossel").css('width', widthTotal)
 
-    var i = 1;
+    var i = 0;
 
     $(".botaoLeft").click(function (e) {
         e.preventDefault();
-        if (i != 1) {
-            i--;
-            rolagemEsquerda()
-        } else {
-            $(".carrossel li:last").insertBefore(".carrossel li:first"); // Insere o último antes do primeiro
-            $(".carrossel").css('margin-left', `-=${widthItem}px`); // Mantém a imagem atual
-            rolagemEsquerda()
+        i--;
+        if (i == -1) i = numeroItens - 1;
+        let a = parseInt($(".carrossel").css('margin-left'))
+        // console.log(i, numeroItens, a, widthTotal-a);
+        if (widthTotal == widthTotal - a) {
+            $(".carrossel li:last").insertBefore($(".carrossel li:first"));
+            $(".carrossel").css('margin-left', `-=${widthItem}px`);
+            // console.log("oi")
         }
+        rolagemEsquerda();
     });
 
     $(".botaoRight").click(function (e) {
         e.preventDefault();
-        if (i < numeroItens) {
-            i++;
-            rolagemDireita()
-        } else {
-            $(".carrossel li:first").insertAfter(".carrossel li:last");
+        i++;
+        let a = -parseInt($(".carrossel").css('margin-left'))
+        if (i == numeroItens) i = 0;
+        // console.log(i, numeroItens, a, widthTotal-a);
+        if (widthTotal - a == widthItem) {
+            $(".carrossel li:first").insertAfter($(".carrossel li:last"));
             $(".carrossel").css('margin-left', `+=${widthItem}px`);
-            rolagemDireita()
+            // console.log("oie")
         }
+        rolagemDireita();
     });
     function rolagemEsquerda() {
         $(".carrossel").animate({ 'margin-left': `+=${widthItem}px` }, '500');
