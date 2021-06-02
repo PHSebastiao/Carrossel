@@ -13,7 +13,7 @@ h1{
 #content {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 5px 1px #000
+    box-shadow: 0 0 5px 1px #000;
 }
 #content .botao {
     z-index: 1;

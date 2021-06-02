@@ -2,7 +2,14 @@ $(document).ready(function () {
     var numeroItens = $(".carrossel .item").length;
     var widthItem = parseInt($(".carrossel .item").css("width"));
     var heightItem = parseInt($(".carrossel .item img").css("height"));
-    var widthTotal = widthItem * numeroItens;
+    
+    let items = Object.keys($(".carrossel .item"));
+    var widthTotal = 0;
+    for (k = 0; k < items.length -2; k++) {
+       widthTotal += $(`#img${k+1}`)[0].width;
+    }
+
+
     $("#content").width(widthItem).height(heightItem);
     $(".carrossel").css("width", widthTotal).height(heightItem);
 
@@ -34,10 +41,19 @@ $(document).ready(function () {
         let posicaoAtual = parseInt($(`#img${i}`).position().left);
 
         i = idNum;
+        
+        let width = $(`#img${i}`)[0].width;
+        let height = $(`#img${i}`)[0].height;
+
         if (rolagem == posicaoAtual) {
             return;
         } else {
-            $(".carrossel").animate({ "margin-left": `-${rolagem}px` });
+            $(".carrossel").animate({ "margin-left": `-${rolagem}px` }, {
+                duration: 500,
+                start: function () {
+                    ajustarCarrossel(width, height);
+                }
+            });
             ativarBotao();
             
         }
@@ -56,21 +72,27 @@ $(document).ready(function () {
         rolagemDireita();
     });
 
-    function rolagemEsquerda(r) {
+    function rolagemEsquerda() {
+        let widthAtual = $(`#img${i}`)[0].width;
         i--;
         if (i == 0) i = numeroItens;
         let a = parseInt($(".carrossel").css("margin-left"));
+        let width = $(`#img${i}`)[0].width;
+        let height = $(`#img${i}`)[0].height;
         // console.log(widthTotal, a, i)
         if (widthTotal == widthTotal - a) {
             $(".carrossel li:last").insertBefore($(".carrossel li:first"));
-            $(".carrossel").css("margin-left", "-="+widthItem+"px");
+            $(".carrossel").css("margin-left", `-=${width}px`);
         }
-
-        $(".carrossel").animate({ "margin-left": `+=${widthItem}px` }, {
+        
+        $(".carrossel").animate({ "margin-left": `+=${width}px` }, {
             duration: 500,
-            progress: function () {
+            start: function () {
                 $(".botaoLeft").addClass("disabled")
                 $(".botoes-nav").addClass("disabled");
+                if (widthAtual != width || heightItem != height) {
+                    ajustarCarrossel(width, height);
+                }
                 ativarBotao();
             },
             done: function () {
@@ -81,21 +103,27 @@ $(document).ready(function () {
     }
 
     function rolagemDireita() {
+        let widthAtual = $(`#img${i}`)[0].width;
         i++;
         if (i == numeroItens + 1) i = 1;
-        let a = -parseInt($(".carrossel").css("margin-left"))
-        if (widthTotal - a == widthItem) {
+        let a = -parseInt($(".carrossel").css("margin-left"));
+        let width = $(`#img${i}`)[0].width;
+        let height = $(`#img${i}`)[0].height;
+        if (widthTotal - a == widthAtual) {
             $(".carrossel li:first").insertAfter($(".carrossel li:last"));
-            $(".carrossel").css("margin-left", `+=${widthItem}px`);
+            $(".carrossel").css("margin-left", `+=${width}px`);
         }
         
         // console.log(widthTotal, a, i)
-        $(".carrossel").animate({ "margin-left": `-=${widthItem}px` }, {
+        $(".carrossel").animate({ "margin-left": `-=${widthAtual}px` }, {
             duration: 500,
-            progress: function () {
+            start: function () {
                 $(".botaoRight").addClass("disabled");
                 $(".botoes-nav").addClass("disabled");
                 ativarBotao();
+                if (widthAtual != width || heightItem != height) {
+                    ajustarCarrossel(width, height);
+                }
             },
             done: function () {
                 $(".botaoRight").removeClass("disabled");
@@ -106,5 +134,9 @@ $(document).ready(function () {
     function ativarBotao() {
         $(".active").removeClass("active");
         $("#botaonav"+i).addClass("active");
+    }
+    function ajustarCarrossel(w, h) {
+        $("#content").animate({ "width": `${w}px`, "height": `${h}px`}, 500);
+        console.log("alo")
     }
 });
